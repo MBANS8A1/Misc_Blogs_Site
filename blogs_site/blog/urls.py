@@ -1,7 +1,7 @@
 from django.urls import path
 
 urlpatterns = [
-    path("/", views.index),
+    path("/"),
     path("posts"),
-    path("posts/<slugPost>")
+    path("posts/<slug:slugPost>")
 ]

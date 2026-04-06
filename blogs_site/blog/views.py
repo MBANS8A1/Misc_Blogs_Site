@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 #To display the starting page
 def entry_page(request):
-    pass
+    return render(request,"blog/index.html")
 
 #To display the list of posts
 def posts(request):

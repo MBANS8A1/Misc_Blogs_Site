@@ -1,7 +1,7 @@
 {% load static %}
 <li>
     <article class="post">
-          <a href="">
+          <a href="{% url "post-details-page" slugPost="the-biking-range" %}">
             <img src="{% static "blog/images/mountain_biking_sm.jpg" %}" alt="Mountain Biking"/>
             <div class="post__content">
               <h3>Mountain Biking</h3>

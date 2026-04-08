@@ -8,7 +8,7 @@ def entry_page(request):
 
 #To display the list of posts
 def posts(request):
-    pass
+    return render(request,"blog/all-posts.html")
 
 
 def single_post_details(request):

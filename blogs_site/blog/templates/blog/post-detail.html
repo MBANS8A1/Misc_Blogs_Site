@@ -1,0 +1,16 @@
+{% extends "base_layout.html" %}
+{% load static %}
+
+{% block page_title %}
+  This Particular Post Title
+{% endblock %}
+
+{% block css_files%}
+  <link rel="stylesheet" href="{% static "blog/includes/post.css" %}" >
+  <link rel="stylesheet" href="{% static "blog/all-posts.css" %}" >
+{% endblock %}
+
+{% block page_body %}
+ <section id="summary"></section>
+{% endblock %}
+

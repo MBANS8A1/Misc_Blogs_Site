@@ -67,11 +67,19 @@ posts = [
     }
 ]
 
+# A helper function to be used on the sort function key
+def get_date(post):
+    return post.get("date")
+
 # Create your views here.
 
 #To display the starting page
 def entry_page(request):
-    return render(request,"blog/index.html")
+    sorted_posts = posts.sort(key=get_date)
+    latest_posts = sorted_posts[-3:]
+    return render(request,"blog/index.html",{
+        "posts": latest_posts
+    })
 
 #To display the list of posts
 def posts(request):

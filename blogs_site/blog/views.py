@@ -4,7 +4,7 @@ from django.shortcuts import render
 all_posts = [
     {
         "slug": "biking-in-the-mountains",
-        "image" : "mountain_biking_sm_jpg",
+        "image" : "mountain_biking_sm.jpg",
         "author": "Sean Crossahm",
         "date": date(2026,1,14),
         "title": "Mountain Biking",

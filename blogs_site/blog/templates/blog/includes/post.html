@@ -2,11 +2,11 @@
 <li>
     <article class="post">
           <a href="{% url "post-details-page" slugPost="the-biking-range" %}">
-            <img src="{% static "blog/images/mountain_biking_sm.jpg" %}" alt="Mountain Biking"/>
+            <img src="{% static "blog/images/"|add:post.image %}" alt={{post.title}}/>
             <div class="post__content">
-              <h3>Mountain Biking</h3>
-              <p>The satisfaction you get from seeing the views from your bike on the mountain course is indescribable. 
-                I was not prepared for what happened, as soon as I got back to riding further along the path!
+              <h3>{{ post.title}}</h3>
+              <p>
+                {{ post.excerpt }}
               </p>
             </div>
           </a>

@@ -84,7 +84,7 @@ def entry_page(request):
 #To display the list of posts
 def posts(request):
     return render(request,"blog/all-posts.html",{
-        all_posts : all_posts.copy()
+        "all_posts" : all_posts.copy()
     })
 
 

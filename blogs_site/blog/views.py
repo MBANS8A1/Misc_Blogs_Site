@@ -87,6 +87,9 @@ def posts(request):
         "all_posts" : all_posts.copy()
     })
 
-
+# To display more content of a specific post
 def single_post_details(request,slugPost):
-    return render(request,"blog/post-detail.html")
+    found_post = next(post for post in posts if post["slug"] == slugPost)
+    return render(request,"blog/post-detail.html",{
+       "post": found_post
+    })

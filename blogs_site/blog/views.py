@@ -47,7 +47,7 @@ all_posts = [
     {
         "slug": "into-the-woods",
         "image": "woods.jpg",
-        "author": "Sean Crossahmn",
+        "author": "Sean Crossahm",
         "date": date(2024, 9, 25),
         "title": "Nature At Its Best",
         "excerpt": "Nature is amazing! The amount of inspiration I get when walking in nature is incredible!",
@@ -89,7 +89,7 @@ def posts(request):
 
 # To display more content of a specific post
 def single_post_details(request,slugPost):
-    found_post = next(post for post in posts if post["slug"] == slugPost)
+    found_post = next(post for post in all_posts if post["slug"] == slugPost)
     return render(request,"blog/post-detail.html",{
        "post": found_post
     })

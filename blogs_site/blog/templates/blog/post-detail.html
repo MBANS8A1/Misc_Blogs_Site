@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block page_title %}
-  This Particular Post Title
+  {{post.title}}
 {% endblock %}
 
 {% block css_files%}
@@ -11,11 +11,11 @@
 
 {% block page_body %}
  <section id="summary">
-    <h2>Post Title</h2>
+    <h2>{{post.title}}</h2>
     <article>
-        <img src ="{% static "blog/images/mountain_biking_sm.jpg" %}" alt = "Post Title"/>
-        <address>By Sean Crossahm</address>
-        <div>Last updated on <time>January 14th 2026</time></div>
+        <img src ="{% static "blog/images/"|add:post.image %}" alt = "{{post.title}}"/>
+        <address>By {{post.author}}</address>
+        <div>Last updated on <time>{{post.date|date:"D d F Y"}}</time></div>
     </article>
  </section>
  <main>

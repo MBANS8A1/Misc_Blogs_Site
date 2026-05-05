@@ -21,8 +21,9 @@ def entry_page(request):
 
 #To display the list of posts
 def posts(request):
+    all_posts = Post.objects.all().order_by("-date")
     return render(request,"blog/all-posts.html",{
-        "all_posts" : all_posts.copy()
+        "all_posts" : all_posts
     })
 
 # To display more content of a specific post

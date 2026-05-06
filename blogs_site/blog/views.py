@@ -1,5 +1,5 @@
 from datetime import date
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import Post
 
 
@@ -26,7 +26,8 @@ def posts(request):
 
 # To display more content of a specific post
 def single_post_details(request,slugPost):
-    found_post =  Post.objects.get(slug=slugPost)
+    found_post =  get_object_or_404(Post,slug=slugPost)
     return render(request,"blog/post-detail.html",{
        "post": found_post
     })
+

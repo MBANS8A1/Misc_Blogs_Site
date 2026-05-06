@@ -2,9 +2,7 @@ from datetime import date
 from django.shortcuts import render
 from .models import Post
 
-all_posts = [
-    
-]
+
 
 # A helper function to be used on the sort function key
 def get_date(post):
@@ -28,7 +26,7 @@ def posts(request):
 
 # To display more content of a specific post
 def single_post_details(request,slugPost):
-    found_post = next(post for post in all_posts if post["slug"] == slugPost)
+    found_post =  Post.objects.get(slug=slugPost)
     return render(request,"blog/post-detail.html",{
        "post": found_post
     })

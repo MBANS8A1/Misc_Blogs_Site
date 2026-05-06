@@ -28,6 +28,7 @@ def posts(request):
 def single_post_details(request,slugPost):
     found_post =  get_object_or_404(Post,slug=slugPost)
     return render(request,"blog/post-detail.html",{
-       "post": found_post
+       "post": found_post,
+       "post_tags": found_post.tags.all()
     })
 

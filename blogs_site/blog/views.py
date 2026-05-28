@@ -16,6 +16,7 @@ class EntryPageView(ListView):
     template_name = "blog/index.html"
     model = Post
     ordering = ["-date"]
+    context_object_name = "posts"
     
     def get_queryset(self):
         queryset = super().get_queryset()

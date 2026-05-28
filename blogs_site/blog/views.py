@@ -22,11 +22,6 @@ class EntryPageView(ListView):
         precise_data = queryset[:3]
         return precise_data
 
-def entry_page(request):
-    latest_posts = Post.objects.all().order_by("-date")[:3]
-    return render(request,"blog/index.html",{
-        "posts": latest_posts
-    })
 
 #To display the list of posts
 def posts(request):

@@ -34,8 +34,9 @@ class AllPostsView(ListView):
 # To display more content of a specific post
 
 class SinglePostView(DetailView):
-    model = Post
     template_name = "blog/post-detail.html"
+    model = Post
+    slug_url_kwarg = "slugPost"
 
 
 

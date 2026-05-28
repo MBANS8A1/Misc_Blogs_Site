@@ -1,5 +1,6 @@
 from datetime import date
 from django.shortcuts import render,get_object_or_404
+from django.views.generic import ListView
 from .models import Post
 
 
@@ -11,6 +12,16 @@ def get_date(post):
 # Create your views here.
 
 #To display the starting page
+class EntryPageView(ListView):
+    template_name = "blog/index.html"
+    model = Post
+    ordering = ["-date"]
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        precise_data = queryset[:3]
+        return precise_data
+
 def entry_page(request):
     latest_posts = Post.objects.all().order_by("-date")[:3]
     return render(request,"blog/index.html",{

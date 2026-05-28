@@ -24,12 +24,12 @@ class EntryPageView(ListView):
         return precise_data
 
 
-#To display the list of posts
-def posts(request):
-    all_posts = Post.objects.all().order_by("-date")
-    return render(request,"blog/all-posts.html",{
-        "all_posts" : all_posts
-    })
+#To display the list of all posts
+class AllPostsView(ListView):
+    template_name = "blog/all-posts.html"
+    model = Post
+    ordering = ["-date"]
+    context_object_name = "all_posts"
 
 # To display more content of a specific post
 def single_post_details(request,slugPost):

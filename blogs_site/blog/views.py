@@ -1,6 +1,6 @@
 from datetime import date
 from django.shortcuts import render,get_object_or_404
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 from .models import Post
 
 
@@ -32,10 +32,10 @@ class AllPostsView(ListView):
     context_object_name = "all_posts"
 
 # To display more content of a specific post
-def single_post_details(request,slugPost):
-    found_post =  get_object_or_404(Post,slug=slugPost)
-    return render(request,"blog/post-detail.html",{
-       "post": found_post,
-       "post_tags": found_post.tags.all()
-    })
+
+class SinglePostView(DetailView):
+    model = Post
+    template_name = "blog/post-detail.html"
+
+
 

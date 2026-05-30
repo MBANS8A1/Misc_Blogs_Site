@@ -32,7 +32,6 @@ class AllPostsView(ListView):
     context_object_name = "all_posts"
 
 # To display more content of a specific post
-
 class SinglePostView(DetailView):
     template_name = "blog/post-detail.html"
     model = Post

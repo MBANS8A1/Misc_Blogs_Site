@@ -1,6 +1,7 @@
 from datetime import date
 from django.shortcuts import render,get_object_or_404
 from django.views.generic import ListView,DetailView
+from django.views import View
 from .models import Post
 from .forms import CommentForm
 
@@ -33,16 +34,24 @@ class AllPostsView(ListView):
     context_object_name = "all_posts"
 
 # To display more content of a specific post
-class SinglePostView(DetailView):
+class SinglePostView(View):
     template_name = "blog/post-detail.html"
     model = Post
     slug_url_kwarg = "slugPost"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["post_tags"] = self.object.tags.all()
-        context["comment_form"] = CommentForm()
-        return context
+    def get(self,request,slugPost):
+        post = Post.objects.get(slug=slugPost)
+        context ={
+            "post" : post,
+            "post_tags" :  post.tags.all(),
+            "comment_form": CommentForm()
+        }
+        return render(request,"blog/post-detail.html",context)
+
+    def post(self,request):
+        pass
+
+  
 
 
 

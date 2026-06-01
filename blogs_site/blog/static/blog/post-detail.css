@@ -121,4 +121,5 @@ main {
   font: inherit;
   padding: 0.25rem;
   border-radius: 6px;
+  border: 1px solid #ccc;
 }

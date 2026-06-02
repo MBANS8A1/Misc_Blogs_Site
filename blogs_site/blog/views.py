@@ -1,5 +1,7 @@
 from datetime import date
 from django.shortcuts import render,get_object_or_404
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from django.views.generic import ListView,DetailView
 from django.views import View
 from .models import Post
@@ -35,8 +37,6 @@ class AllPostsView(ListView):
 
 # To display more content of a specific post
 class SinglePostView(View):
-    template_name = "blog/post-detail.html"
-    model = Post
     slug_url_kwarg = "slugPost"
 
     def get(self,request,slugPost):
@@ -48,8 +48,21 @@ class SinglePostView(View):
         }
         return render(request,"blog/post-detail.html",context)
 
-    def post(self,request):
-        pass
+    def post(self,request,slugPost):
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment_form.save()
+            HttpResponseRedirect(reverse("post-details-page",args=[slugPost]))
+        
+        post = Post.objects.get(slug=slugPost)
+        context ={
+            "post" : post,
+            "post_tags" :  post.tags.all(),
+            "comment_form": comment_form
+        }
+        return render(request,"blog/post-detail.html",context)
+
+
 
   
 

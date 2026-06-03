@@ -123,3 +123,10 @@ main {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+
+.errorlist{
+  list-style: none;
+  margin: 0.5rem 0;
+  padding: 0;
+  color: #d6000b;
+}

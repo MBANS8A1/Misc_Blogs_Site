@@ -10,6 +10,12 @@
 {% endblock %}
 
 {% block page_body %}
+ {% if comment_form.errors %}
+   <div id="error-box">
+     <h2>Submission of the comment failed!</h2>
+     <p>Please check the comment form below the post and fix your errors.</p>
+   </div>
+ {% endif %}
  <section id="summary">
     <h2>{{post.title}}</h2>
     <div>
@@ -23,6 +29,7 @@
         <div>Last updated on <time>{{post.date|date:"D d F Y"}}</time></div>
     </article>
  </section>
+
  <main>
   {{post.content|linebreaks}}
  </main>

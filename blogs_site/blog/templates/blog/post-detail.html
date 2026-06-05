@@ -34,9 +34,19 @@
  <main>
   {{post.content|linebreaks}}
  </main>
+ <section id="comments">
+   <ul>
+     {% for comment in comments %}
+       <li>
+          <h2>{{ comment.user_name }}</h2>
+          <p>{{ comment.text|linebreaks }}</p>
+       </li>
+     {% endfor %}
+   </ul>
+ </section>
  <section id="comment-form">
     <h2>Your Comment</h2>
-    <form method="POST" action="{% url "post-details-page" post.slug %}" >
+    <form action="{% url "post-details-page" post.slug %}" method="POST">
       {% csrf_token %}
       {% for form_field in comment_form %}
         <div class="form-control {% if form_field.errors %}invalid{% endif %}">
@@ -45,7 +55,7 @@
           {{ form_field.errors }}
         </div>
       {% endfor %}
-      <button>Save Comment</button>
+      <button type="submit">Save Comment</button>
     </form>
  </section>
 {% endblock %}

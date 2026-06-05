@@ -1,5 +1,5 @@
 from datetime import date
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView,DetailView
@@ -37,8 +37,7 @@ class AllPostsView(ListView):
 
 # To display more content of a specific post
 class SinglePostView(View):
-    slug_url_kwarg = "slugPost"
-
+    
     def get(self,request,slugPost):
         post = Post.objects.get(slug=slugPost)
         context ={
@@ -50,20 +49,19 @@ class SinglePostView(View):
         return render(request,"blog/post-detail.html",context)
 
     def post(self,request,slugPost):
-        comment_form = CommentForm(request.POST)
         post = Post.objects.get(slug=slugPost)
+        comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            HttpResponseRedirect(reverse("post-details-page",args=[slugPost]))
-        
+            return HttpResponseRedirect(reverse("post-details-page",args=[slugPost]))
+        #If the context_form is invalid we still want to pass the form with the errors and invalidated data to the context
         context ={
             "post" : post,
             "post_tags" :  post.tags.all(),
             "comment_form": comment_form,
             "comments": post.comments.all()
-
         }
         return render(request,"blog/post-detail.html",context)
 

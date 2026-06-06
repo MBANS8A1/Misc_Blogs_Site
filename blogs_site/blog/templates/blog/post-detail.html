@@ -25,7 +25,10 @@
       {% endfor %}
     </div> 
     <div id="read-later">
-      <button>Read Later</button>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <button>Read Later</button>
+      </form>
     </div> 
     <article>
         <img src ="{{post.image.url}}" alt = "{{post.title}}"/>

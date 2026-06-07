@@ -67,7 +67,12 @@ class SinglePostView(View):
 
 class ReadLaterView(View):
     def post(request,self):
-        pass
+        stored_posts = request.session.get("stored_posts")
+
+        if stored_posts is None:
+            stored_posts = []
+        
+        stored_posts.append(request.POST["post_id"])
 
 
   

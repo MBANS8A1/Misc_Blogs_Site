@@ -67,7 +67,18 @@ class SinglePostView(View):
 
 class ReadLaterView(View):
     def get(self,request):
-        pass
+        context = {
+
+        }
+        stored_posts = request.session.get("stored_posts",[])
+
+        if stored_posts is None or len(stored_posts) == 0:
+            context["posts"] = []
+            context["has_posts"] = False
+        else:
+            Post.objects.filter(id__in=stored_posts)
+
+
     def post(self,request):
         stored_posts = request.session.get("stored_posts",[])
         if stored_posts is None:

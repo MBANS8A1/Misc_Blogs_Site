@@ -66,6 +66,8 @@ class SinglePostView(View):
         return render(request,"blog/post-detail.html",context)
 
 class ReadLaterView(View):
+    def get(self,request):
+        pass
     def post(self,request):
         stored_posts = request.session.get("stored_posts",[])
         if stored_posts is None:

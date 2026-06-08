@@ -7,8 +7,9 @@
 {% block page_body %}
   <section>
     <ul>
-        <li><a href="">Post Title</a></li>
-        <li><a href="">Post Title</a></li>
+      {% for stored_post in posts %}
+        <li><a href="{% url "post-details-page" stored_post.slug %}">{{ stored_post.title }}</a></li>
+      {% endfor %}
     </ul>
   </section>
 {% endblock %}

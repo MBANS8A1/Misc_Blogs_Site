@@ -21,8 +21,20 @@
 }
 
 #stored-posts li{
-    border: 1px solid #ccc;
-    padding: 1rem;
     margin: 1rem 0;
 }
 
+#stored-posts a{
+    display: block;
+    padding: 1rem;
+    width: 100%;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    color: #1b1b1b;
+    font-weight: bold;
+}
+
+#stored-posts a:hover,
+#stored-posts a:active{
+    background-color: #ccc;
+}

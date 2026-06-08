@@ -12,8 +12,13 @@
 </head>
 <body>
   <header id="index-navigation">
-    <h1><a href="{% url "entry-page" %}">Sean's Blog</a></h1>
-    <nav><a href="{% url "posts-page" %}">All Posts</a></nav>
+    <h1>
+      <a href="{% url "entry-page" %}">Sean's Blog</a>
+    </h1>
+    <nav>
+      <a href="{% url "read-later" %}">My Stored (Bookmarked) Posts</a>
+      <a href="{% url "posts-page" %}">All Posts</a>
+    </nav>
   </header>
   {% block page_body %} {% endblock %}
 </body>

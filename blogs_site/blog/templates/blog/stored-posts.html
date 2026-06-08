@@ -6,6 +6,9 @@
 
 {% block page_body %}
   <section>
+    {% if not has_posts%}
+      <p> You have not saved (bookmarked) any posts for later.</p>
+    {% endif %}
     <ul>
       {% for stored_post in posts %}
         <li><a href="{% url "post-details-page" stored_post.slug %}">{{ stored_post.title }}</a></li>

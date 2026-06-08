@@ -1,7 +1,13 @@
 {% extends "base_layout.html" %}
+{% load static %}
+
 
 {% block page_title %}
  My Stored (Bookmarked) Posts
+{% endblock %}
+
+{% block css_files%}
+  <link rel="stylesheet" href="{% static "blog/stored-posts.css" %}" >
 {% endblock %}
 
 {% block page_body %}

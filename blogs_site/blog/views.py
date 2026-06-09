@@ -50,7 +50,8 @@ class SinglePostView(View):
             "post" : post,
             "post_tags" :  post.tags.all(),
             "comment_form": CommentForm(),
-            "comments": post.comments.all().order_by("-id")
+            "comments": post.comments.all().order_by("-id"),
+            "bookmarked_for_later": is_bookmarked_for_later
         }
         return render(request,"blog/post-detail.html",context)
 

@@ -40,6 +40,12 @@ class SinglePostView(View):
     
     def get(self,request,slugPost):
         post = Post.objects.get(slug=slugPost)
+        is_bookmarked_for_later = False
+        stored_posts = request.session.get("stored_posts")
+        if stored_posts is not None:
+            is_bookmarked_for_later = any(val == post.id for val in stored_posts)
+        else:
+            is_bookmarked_for_later = False
         context ={
             "post" : post,
             "post_tags" :  post.tags.all(),

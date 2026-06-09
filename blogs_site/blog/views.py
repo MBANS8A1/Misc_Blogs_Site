@@ -37,21 +37,26 @@ class AllPostsView(ListView):
 
 # To display more content of a specific post
 class SinglePostView(View):
-    
-    def get(self,request,slugPost):
-        post = Post.objects.get(slug=slugPost)
-        is_bookmarked_for_later = False
+
+    def is_stored_post(self,request,post_id):
         stored_posts = request.session.get("stored_posts")
+        is_bookmarked_for_later = False
         if stored_posts is not None:
-            is_bookmarked_for_later = any(val == post.id for val in stored_posts)
+            is_bookmarked_for_later = any(val == post_id for val in stored_posts)
         else:
             is_bookmarked_for_later = False
+        
+        return is_bookmarked_for_later
+
+    def get(self,request,slugPost):
+        post = Post.objects.get(slug=slugPost)
+          
         context ={
             "post" : post,
             "post_tags" :  post.tags.all(),
             "comment_form": CommentForm(),
             "comments": post.comments.all().order_by("-id"),
-            "bookmarked_for_later": is_bookmarked_for_later
+            "bookmarked_for_later": self.is_stored_post(request,post.id)
         }
         return render(request,"blog/post-detail.html",context)
 
@@ -68,7 +73,9 @@ class SinglePostView(View):
             "post" : post,
             "post_tags" :  post.tags.all(),
             "comment_form": comment_form,
-            "comments": post.comments.all().order_by("-id")
+            "comments": post.comments.all().order_by("-id"),
+            "bookmarked_for_later": self.is_stored_post(request,post.id)
+
         }
         return render(request,"blog/post-detail.html",context)
 

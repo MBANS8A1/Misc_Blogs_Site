@@ -4,5 +4,4 @@ __pycache__
 /Lib
 /Scripts
 pyvenv.cfg
-blogs_site/blogs_site/__pycache__/urls.cpython-314.pyc
-blogs_site/blogs_site/blogs_site/settings.py
+blogs_site/blogs_site/

@@ -43,3 +43,4 @@ class Comment(models.Model):
     user_email = models.EmailField()
     text = models.TextField(max_length=400)
     post =models.ForeignKey(Post,on_delete=models.CASCADE,related_name="comments")
+    published_at =models.DateTimeField(auto_now=True)

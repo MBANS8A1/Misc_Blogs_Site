@@ -51,6 +51,7 @@
    <ul>
      {% for comment in comments %}
        <li>
+          <p id="comment-date">Created on <time>{{comment.published_at|date:"j/m/Y"}}</time> at <time>{{comment.published_at|time:"H:ia"}}</time></p>
           <h2>{{ comment.user_name }}</h2>
           <p>{{ comment.text|linebreaks }}</p>
        </li>

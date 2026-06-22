@@ -113,9 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-gb'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
@@ -149,7 +149,7 @@ AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
 STATICFILES_FOLDER = getenv("STATICFILES_FOLDER","static_store")
 
-MEDIAFILES_FOLDER = getenv("MEDIAFILES_FOLDER","media_store") 
+MEDIAFILES_FOLDER = getenv("MEDIAFILES_FOLDER","media_store")
 
 STORAGES = {
     # Media file (image) management

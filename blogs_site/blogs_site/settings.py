@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'seandjangoblog',
-        'PASSWORD': 'seanbloglayover',
+        'USER': getenv("DATABASE_USERNAME"),
+        'PASSWORD': getenv("DATABASE_PASSWORD"),
         'HOST': 'django-misc-blog-db.cfw0m62g671c.eu-west-2.rds.amazonaws.com',
         'PORT': '5432'
     }

@@ -184,6 +184,11 @@ main {
    border-bottom: none;
 }
 
+#comment-date{
+  text-align: left;
+  font-style: italic;
+}
+
 #read-later{
   margin: 2rem 0;
 }
